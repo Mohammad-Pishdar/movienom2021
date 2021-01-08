@@ -10,13 +10,15 @@ function movieSearch() {
     }).then(function (response) {
         $.each(response.Search, function (key, value) {
             console.log(value.Title);
-            resultsList.append(`<li>${value.Title}</li>`);
+            resultsList.append(`<li><img src=${value.Poster} alt=${value.Title} width="300" height="451">${value.Title}</li>`);
         })
     })
 }
 
 movieSearchButton.on('click', function (e) {
     e.preventDefault();
+    //ensuring that previous search results disappear as soon as we do a new search
+    resultsList.html("");
     movieTitle = movieSearchBox.val();
     movieSearch();
 });
