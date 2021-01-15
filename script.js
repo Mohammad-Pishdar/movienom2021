@@ -13,11 +13,12 @@ function movieSearch() {
                 results.append(`
                 <div class="responsive">
                     <div class="gallery">
-                        <a target="_blank" href="https://via.placeholder.com/300x427?text=Image+Not+Found">
-                             <img src="https://via.placeholder.com/300x451?text=Image+Not+Found" alt="Image not found" 
-                             width="300" height="427">
-                        </a>
-                    <div class="desc">Add a description of the image here</div>
+                        <img src="https://via.placeholder.com/300x451?text=Image+Not+Found" alt="${value.Title} Image not found" width="300" height="427">
+                        <div class="image-container">
+                            <h4><b>${value.Title}</b> (${value.Year})</b></h4> 
+                            <button class="imdb-btn" type="button"><span>IMDb</span></button>
+                        </div>
+                    </div>
                 </div>`);
             } else {
                 results.append(`
@@ -42,9 +43,3 @@ movieSearchButton.on('click', function (e) {
     movieTitle = movieSearchBox.val();
     movieSearch();
 });
-
-{/* <div class="gallery">
-                        <a target="_blank" href=${value.Poster}>
-                             <img src=${value.Poster} alt="Cinque Terre" width="300" height="427">
-                        </a>
-                    <div class="desc">Add a description of the image here</div> */}
