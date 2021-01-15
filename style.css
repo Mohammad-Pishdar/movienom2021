@@ -196,7 +196,7 @@ form#movieSearchBox::after {
 
 .image-container {
     padding: 2px;
-    height: 20vh;
+    height: 15vh;
 }
 
 div.gallery img {
@@ -231,6 +231,9 @@ div.gallery h4 {
         text-align-last: center;
     }
 
+    .image-card-btns {
+        text-align-last: center;
+    }
 }
 
 /* buttons */
