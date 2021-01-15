@@ -5,6 +5,7 @@ $(document).ready(function () {
     const nominationList = $('.nomination-list');
     const results = $('.container');
     let heartIcon;
+    let deleteX;
     let movieTitle;
     let nominationListArray = [];
 
@@ -70,7 +71,16 @@ $(document).ready(function () {
                     alert("You reached the maximum of 5 nominations. In order to add this item, please remove one of the old items first.");
                     return;
                 }
+
+                deleteX = $('.close');
+
+                deleteX.click(function(e){
+                    e.preventDefault();
+                    e.currentTarget.parentElement.remove();
+                })
             });
+
+            
 
         })
     }
