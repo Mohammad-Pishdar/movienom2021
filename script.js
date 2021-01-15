@@ -76,7 +76,12 @@ $(document).ready(function () {
 
                 deleteX.click(function(e){
                     e.preventDefault();
+                    let itemToBeRemoved = e.currentTarget.parentElement.textContent.slice(0,-1);
                     e.currentTarget.parentElement.remove();
+                    //removing the item from the list of items so you can add it again if you wish
+                    nominationListArray = jQuery.grep(nominationListArray, function(value) {
+                        return value != itemToBeRemoved;
+                    })
                 })
             });
 
