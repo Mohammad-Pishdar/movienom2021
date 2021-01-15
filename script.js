@@ -13,7 +13,12 @@ function movieSearch() {
                 results.append(`
                 <div class="responsive">
                     <div class="gallery">
-                        <img src="https://via.placeholder.com/300x451?text=Image+Not+Found" alt="${value.Title} Image not found" width="300" height="427">
+                        <img src="https://via.placeholder.com/300x451?text=Image+Not+Found" alt="${value.Title} Image not found" width="300" height="300">
+                        <div class="overlay">
+                            <a href="#" class="icon" title="Nominate This Movie!">
+                            <i class="fas fa-heart fave-btn"></i>
+                            </a>
+                        </div>
                         <div class="image-container">
                             <h4><b>${value.Title}</b> (${value.Year})</b></h4> 
                         </div> 
@@ -26,7 +31,12 @@ function movieSearch() {
                 results.append(`
                 <div class="responsive">
                     <div class="gallery">
-                        <img src=${value.Poster} alt=${value.Title} width="300" height="427">
+                        <img src=${value.Poster} alt=${value.Title} width="300" height="300">
+                        <div class="overlay">
+                            <a href="#" class="icon" title="Nominate This Movie!">
+                            <i class="fas fa-heart fave-btn"></i>
+                            </a>
+                        </div>
                         <div class="image-container">
                             <h4><b>${value.Title}</b> (${value.Year})</b></h4>
                         </div> 

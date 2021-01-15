@@ -190,6 +190,13 @@ form#movieSearchBox::after {
 
 /* card settings */
 
+.gallery{
+    background-color: darkblue;
+    color: white;
+    border-radius: 30px 30px 25px 25px;
+    position: relative;
+}
+
 .gallery:hover {
     box-shadow: 0 8px 16px 0 #f76f00f6;
 }
@@ -201,6 +208,7 @@ form#movieSearchBox::after {
 
 div.gallery img {
     width: 100%;
+    border-radius: 25px 25px 0px 0px;
 }
 
 div.gallery h4 {
@@ -236,7 +244,44 @@ div.gallery h4 {
     }
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 70%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: white;
+    border-radius: 25px 25px 0px 0px;
+  }
+
+  .gallery:hover .overlay {
+    opacity: 1;
+  }
+
+  .icon {
+    color: #eee;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .fa-heart:hover {
+    color: red;
+  }
+
 /* buttons */
+
+.image-card-btns {
+    text-align-last: center;
+}
 
 .imdb-btn {
     border-radius: 4px;
