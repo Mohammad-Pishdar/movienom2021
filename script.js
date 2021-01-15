@@ -37,7 +37,7 @@ $(document).ready(function () {
                     <div class="gallery">
                         <img src=${value.Poster} alt=${value.Title} width="300" height="300">
                         <div class="overlay">
-                            <a href="#" class="icon" title="Nominate This Movie!">
+                            <a href="#" class="icon" title="${value.Title} (${value.Year})">
                             <i class="fas fa-heart fave-btn"></i>
                             </a>
                         </div>
@@ -51,14 +51,18 @@ $(document).ready(function () {
                 </div>`);
                 }
             });
+
             heartIcon = $('.icon');
-            console.log(heartIcon);
-            heartIcon.click(function(e) {
+
+            heartIcon.click(function (e) {
                 e.preventDefault();
-                alert('clicked');
-            })
-        }
-        )
+                console.log(e.target);
+                nominationList.append(`
+                <li>${e.currentTarget.title}<span class="close">&times;</span></li>
+                `)
+            });
+
+        })
     }
 
     movieSearchButton.on('click', function (e) {
