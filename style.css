@@ -223,6 +223,10 @@ div.gallery h4 {
     .image-card-btns {
         text-align-last: center;
     }
+
+    div.gallery img {
+        height: 450px;
+    }
 }
 
 .overlay {

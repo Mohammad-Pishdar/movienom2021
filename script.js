@@ -6,6 +6,7 @@ $(document).ready(function () {
     const results = $('.container');
     let heartIcon;
     let movieTitle;
+    let nominationListArray = [];
 
     function movieSearch() {
         $.ajax({
@@ -56,10 +57,15 @@ $(document).ready(function () {
 
             heartIcon.click(function (e) {
                 e.preventDefault();
-                console.log(e.target);
-                nominationList.append(`
+                if (jQuery.inArray(e.currentTarget.title, nominationListArray) === -1) {
+                    nominationList.append(`
                 <li>${e.currentTarget.title}<span class="close">&times;</span></li>
                 `)
+                    nominationListArray.push(e.currentTarget.title);
+                } else {
+                    alert("Item already added to the nomination list.")
+                    return;
+                }
             });
 
         })
