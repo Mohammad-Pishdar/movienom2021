@@ -21,7 +21,7 @@ $(document).ready(function () {
                     <div class="gallery">
                         <img src="https://via.placeholder.com/300x451?text=Image+Not+Found" alt="${value.Title} Image not found" width="300" height="300">
                         <div class="overlay">
-                            <a href="#" class="icon" title="Nominate This Movie!">
+                            <a href="#" class="icon" title="${value.Title} (${value.Year})">
                             <i class="fas fa-heart fave-btn"></i>
                             </a>
                         </div>
@@ -72,20 +72,25 @@ $(document).ready(function () {
                     return;
                 }
 
+                //saving the list to local storage
+                localStorage.setItem('nominationList', JSON.stringify(nominationListArray));
+
                 deleteX = $('.close');
 
-                deleteX.click(function(e){
+                deleteX.click(function (e) {
                     e.preventDefault();
-                    let itemToBeRemoved = e.currentTarget.parentElement.textContent.slice(0,-1);
+                    let itemToBeRemoved = e.currentTarget.parentElement.textContent.slice(0, -1);
                     e.currentTarget.parentElement.remove();
                     //removing the item from the list of items so you can add it again if you wish
-                    nominationListArray = jQuery.grep(nominationListArray, function(value) {
+                    nominationListArray = jQuery.grep(nominationListArray, function (value) {
                         return value != itemToBeRemoved;
                     })
+                    //updating local storage accordingly
+                    localStorage.setItem('nominationList', JSON.stringify(nominationListArray));
                 })
             });
 
-            
+
 
         })
     }
@@ -97,4 +102,32 @@ $(document).ready(function () {
         movieTitle = movieSearchBox.val();
         movieSearch();
     });
+
+    function appStart() {
+        if (localStorage.length > 0) {
+            nominationListArray = JSON.parse(localStorage.getItem('nominationList'));
+            console.log(nominationListArray);
+            nominationListArray.forEach(function (item) {
+                nominationList.append(`
+                <li>${item}<span class="close">&times;</span></li>
+                `)
+            })
+        }
+
+        deleteX = $('.close');
+
+        deleteX.click(function (e) {
+            e.preventDefault();
+            let itemToBeRemoved = e.currentTarget.parentElement.textContent.slice(0, -1);
+            e.currentTarget.parentElement.remove();
+            //removing the item from the list of items so you can add it again if you wish
+            nominationListArray = jQuery.grep(nominationListArray, function (value) {
+                return value != itemToBeRemoved;
+            })
+            //updating local storage accordingly
+            localStorage.setItem('nominationList', JSON.stringify(nominationListArray));
+        })
+    };
+
+    appStart();
 });
