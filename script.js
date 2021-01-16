@@ -109,7 +109,7 @@ $(document).ready(function () {
     });
 
     function appStart() {
-        if (localStorage.nominationList !== "[]") {
+        if (localStorage) {
             nominationList.append(`
             <p>List of the movies you have nominated so far:</P>
             `)
