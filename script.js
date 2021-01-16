@@ -14,7 +14,7 @@ $(document).ready(function () {
             url: `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=3b9b8938`,
             method: "GET"
         }).then(function (response) {
-            if(response.Response === "False") {
+            if (response.Response === "False") {
                 results.append(`
                     Movie Not Found
                 `)
@@ -109,7 +109,7 @@ $(document).ready(function () {
     });
 
     function appStart() {
-        if (localStorage) {
+        if (localStorage.nominationList !== "[]") {
             nominationList.append(`
             <p>List of the movies you have nominated so far:</P>
             `)
