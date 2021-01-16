@@ -109,10 +109,7 @@ $(document).ready(function () {
     });
 
     function appStart() {
-        if (localStorage.nominationList !== "[]") {
-            nominationList.append(`
-            <p>List of the movies you have nominated so far:</P>
-            `)
+        if (localStorage.nominationList) {
             nominationListArray = JSON.parse(localStorage.getItem('nominationList'));
             console.log(nominationListArray);
             nominationListArray.forEach(function (item) {
