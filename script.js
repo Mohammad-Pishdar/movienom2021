@@ -14,6 +14,11 @@ $(document).ready(function () {
             url: `http://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=3b9b8938`,
             method: "GET"
         }).then(function (response) {
+            if(response.Response === "False") {
+                results.append(`
+                    Movie Not Found
+                `)
+            }
             $.each(response.Search, function (key, value) {
                 if (value.Poster === "N/A") {
                     results.append(`
@@ -104,11 +109,15 @@ $(document).ready(function () {
     });
 
     function appStart() {
-        if (localStorage.length > 0) {
+        if (localStorage.nominationList !== "[]") {
+            nominationList.append(`
+            <p>List of the movies you have nominated so far:</P>
+            `)
             nominationListArray = JSON.parse(localStorage.getItem('nominationList'));
             console.log(nominationListArray);
             nominationListArray.forEach(function (item) {
                 nominationList.append(`
+               
                 <li>${item}<span class="close">&times;</span></li>
                 `)
             })
