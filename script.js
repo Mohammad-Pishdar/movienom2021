@@ -63,16 +63,17 @@ $(document).ready(function () {
 
             heartIcon.click(function (e) {
                 e.preventDefault();
-                if (jQuery.inArray(e.currentTarget.title, nominationListArray) === -1 && nominationListArray.length < 5) {
+                if (!nominationListArray.includes(e.currentTarget.title) && nominationListArray.length < 5) {
                     nominationList.append(`
                 <li>${e.currentTarget.title}<span class="close">&times;</span></li>
                 `)
                     nominationListArray.push(e.currentTarget.title);
-                } else {
+                }
+                else if (nominationListArray.includes(e.currentTarget.title)) {
                     alert("Item already added to the nomination list.")
                     return;
-                }
-                if (nominationListArray.length > 5) {
+                } 
+                else {
                     alert("You reached the maximum of 5 nominations. In order to add this item, please remove one of the old items first.");
                     return;
                 }
