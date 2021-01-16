@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     function movieSearch() {
         $.ajax({
-            url: `http://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=3b9b8938`,
+            url: `https://www.omdbapi.com/?s=${movieTitle}&type=movie&apikey=3b9b8938`,
             method: "GET"
         }).then(function (response) {
             if(response.Response === "False") {
